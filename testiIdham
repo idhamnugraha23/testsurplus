@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "aa10251c-126c-4ad6-809b-f6491dca1fd4",
+		"name": "TestIdhamSurplus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25884775"
+	},
+	"item": [
+		{
+			"name": "Test Idham Get",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check type\", () => {\r",
+							"    _.each(pm.response.json(), (item) => { \r",
+							"        pm.expect(typeof item[\"userId\"]).to.be.oneOf(['number']);\r",
+							"        pm.expect(typeof item[\"id\"]).to.be.oneOf(['number']);\r",
+							"        pm.expect(typeof item[\"title\"]).to.be.oneOf(['string']);\r",
+							"        pm.expect(typeof item[\"body\"]).to.be.oneOf(['string']);\r",
+							"    })\r",
+							"})\r",
+							"let test = {\"number\" : 1234};\r",
+							"pm.test(\"Check is an Int - 'With isInteger'\", function () {\r",
+							"    pm.expect(Number.isInteger(test.number), `Value: ${test.number} is a ${typeof test.number} and not a number`).to.be.true;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check is an Int - 'With a number'\", function () {\r",
+							"    pm.expect(test.number).to.be.a(\"number\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Idham Post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"userId\": 12,\r\n        \"title\": \"recomendation\",\r\n        \"body\": \"motorcycle\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://jsonplaceholder.typicode.com/posts",
+					"protocol": "https",
+					"host": [
+						"jsonplaceholder",
+						"typicode",
+						"com"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
